@@ -1,0 +1,15 @@
+################################################################################
+# Automatically-generated file. Do not edit!
+################################################################################
+
+# Add inputs and outputs from these tool invocations to the build variables 
+MAIN_O_SRCS += \
+../main/.libs/splitstr.o \
+../main/.libs/iwconfig.o \
+../main/.libs/iwpriv.o \
+../main/.libs/iwlib.o \
+../main/.libs/wireless_check.o
+
+
+# Each subdirectory must supply rules for building sources it contributes
+

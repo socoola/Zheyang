@@ -1,0 +1,4 @@
+---- c_request_audio Matches (3 in 2 files) ----
+C_audio.h (include):bool c_request_audio(GET_AUDIO_CHUNK_CALLBACK callback, AUDIO_CODEC codec);
+Input-audio.c:bool c_request_audio(GET_AUDIO_CHUNK_CALLBACK callback)
+Input-audio.c:        c_request_audio(get_audio_chunk_cb, ADPCM);

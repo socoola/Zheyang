@@ -1,0 +1,171 @@
+
+FrameHeap 200; # Appropriate for one video stream and one audio stream
+# FrameHeap 20 921600; # Appropriate for capturing 640x480 frames
+
+Port 554;
+
+# RtpRange 50000 60000;
+
+Input video {
+	#Device /dev/video0;
+	#InputType webcam;
+	FrameRate 30;
+	port 5000;
+	Format "h264"; # or mjpeg
+	#
+	# The frame size setting is optional, and will default to 352x288
+	# for webcams, but Spook will try to automatically resize down to the
+	# largest size that the webcam supports natively.
+	#
+	#Path "/test.sdp" "spook" "test" "test";
+	#FrameSize 176 144;
+
+	output "h264";
+}
+
+Input video {
+	#Device /dev/video0;
+	#InputType webcam;
+	FrameRate 30;
+	port 5000;
+	Format "h264"; # or mjpeg
+	#
+	# The frame size setting is optional, and will default to 352x288
+	# for webcams, but Spook will try to automatically resize down to the
+	# largest size that the webcam supports natively.
+	#
+	#Path "/test.sdp" "spook" "test" "test";
+	#FrameSize 176 144;
+
+	output "mpeg4";
+}
+
+Input video {
+	#Device /dev/video0;
+	#InputType webcam;
+	FrameRate 30;
+	port 5000;
+	Format "h264"; # or mjpeg
+	#
+	# The frame size setting is optional, and will default to 352x288
+	# for webcams, but Spook will try to automatically resize down to the
+	# largest size that the webcam supports natively.
+	#
+	#Path "/test.sdp" "spook" "test" "test";
+	#FrameSize 176 144;
+
+	output "mjpeg";
+}
+
+Input video {
+	#Device /dev/video0;
+	#InputType webcam;
+	FrameRate 30;
+	port 5000;
+	Format "h264"; # or mjpeg
+	#
+	# The frame size setting is optional, and will default to 352x288
+	# for webcams, but Spook will try to automatically resize down to the
+	# largest size that the webcam supports natively.
+	#
+	#Path "/test.sdp" "spook" "test" "test";
+	#FrameSize 176 144;
+
+	output "h264_low";
+}
+Input audio {
+	#Device /dev/video0;
+	#InputType webcam;
+	FrameRate 8000;
+	port 6000;
+	Format "adpcm"; # or mjpeg
+	#
+	# The frame size setting is optional, and will default to 352x288
+	# for webcams, but Spook will try to automatically resize down to the
+	# largest size that the webcam supports natively.
+	#
+	#Path "/test.sdp" "spook" "test" "test";
+	#FrameSize 176 144;
+
+	output "pcm";
+}
+
+RTSP-Handler Live {
+	#
+	# No authentication
+	#
+	#Path /webcam;
+
+	#
+	# Authentication with the realm "Spook" (can be anything), where
+	# the user must authenticate as "testuser" with password "testpass"
+	#
+	Path /webcam "Spook" "testuser" "testpass";
+
+	#
+	# List of tracks in the session; will almost always be a video
+	# stream first, followed by an optional audio stream
+	#TOKEN_STR
+	Track "h264";
+	Track "pcm"; # un-comment this if you are using audio
+}
+
+RTSP-Handler Live {
+	#
+	# No authentication
+	#
+	Path /webcam1;
+
+	#
+	# Authentication with the realm "Spook" (can be anything), where
+	# the user must authenticate as "testuser" with password "testpass"
+	#
+	#Path /webcam "Spook" "testuser" "testpass";
+
+	#
+	# List of tracks in the session; will almost always be a video
+	# stream first, followed by an optional audio stream
+	#
+	Track "mpeg4";
+	Track "pcm"; # un-comment this if you are using audio
+}
+
+RTSP-Handler Live {
+	#
+	# No authentication
+	#
+	Path /webcam2;
+
+	#
+	# Authentication with the realm "Spook" (can be anything), where
+	# the user must authenticate as "testuser" with password "testpass"
+	#
+	#Path /webcam "Spook" "testuser" "testpass";
+
+	#
+	# List of tracks in the session; will almost always be a video
+	# stream first, followed by an optional audio stream
+	#
+	Track "mjpeg";
+	Track "pcm"; # un-comment this if you are using audio
+}
+
+RTSP-Handler Live {
+	#
+	# No authentication
+	#
+	Path /webcam3;
+
+	#
+	# Authentication with the realm "Spook" (can be anything), where
+	# the user must authenticate as "testuser" with password "testpass"
+	#
+	#Path /webcam "Spook" "testuser" "testpass";
+
+	#
+	# List of tracks in the session; will almost always be a video
+	# stream first, followed by an optional audio stream
+	#TOKEN_STR
+	Track "h264_low";
+	Track "pcm"; # un-comment this if you are using audio
+}

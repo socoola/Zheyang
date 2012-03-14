@@ -1,0 +1,7 @@
+[Default]
+CountryRegion=1
+SSID=shenzhen
+NetworkType=Infra
+AuthMode=WPA2PSK
+EncrypType=AES
+WPAPSK=ipcamera2
